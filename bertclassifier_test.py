@@ -43,10 +43,11 @@ print(corpusDf.head())
 trainX, testX, trainY, testY = train_test_split(corpus[:, 0], corpus[:, 1], test_size=0.3)
 
 # 构造模型
+# 分类数, 最大文本长度, 学习率
 myModel = MyBERTClassier(classNum=classNum, XMaxLen=maxLen, learning_rate=0.0001)
 
 # 训练模型
-myModel.fit(trainX, trainY, epochs=15, batch_size=16)
+myModel.fit(trainX, trainY, epochs=15, batch_size=4)
 
 # 预测数据
 result = np.argmax(myModel.predict(testX), axis=-1)
